@@ -1,15 +1,4 @@
 import axios from 'axios';
-/*
-####ids###
-////smarthphones=MLA1051////
-
-////computacion=MLA1648////
-placas de video = MLA1658
-procesadores =  MLA1693
-memory_rams = MLA1694
-motherboards = MLA1692
-/////
- */
 let categories = [];
 
 const GetCategories = async () => {
@@ -56,7 +45,6 @@ const SearchProducts = async (search) => {
     .then((resp) => resp.data)
     .catch((err) => console.log(err));
   return products;
-  // return product[0].body;
 };
 
 export const ApiFunctions = {
