@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { ApiFunctions } from '../utils/apifunctions';
 import './css/products.css';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import { formatSearch } from '../utils/stringFormatting';
 import { useHistory } from 'react-router-dom';
 import SidebarCategories from '../components/SidebarCategories/SidebarCategories';
 
@@ -10,7 +11,9 @@ export default class Products extends Component {
     super(props);
 
     this.state = {
-      category: this.props.match.params.category,
+      category:
+        this.props.match !== undefined ? this.props.match.params.category : '',
+      context: this.props.context || '',
       products: [],
     };
   }
@@ -20,23 +23,48 @@ export default class Products extends Component {
   }
 
   getProducts = async () => {
-    const { category } = this.state;
-    const results = await ApiFunctions.GetProductByCategory(category);
-    const _category = await ApiFunctions.GetCategoryById(category);
-    this.setState({ products: results, category: _category });
+    switch (this.state.context) {
+      case 'search':
+        const url = this.props.location.search.split('=')[1];
+        const _search = formatSearch(url);
+        // console.log(_search);
+        const searchResult = await ApiFunctions.SearchProducts(_search);
+        console.log(searchResult);
+        await this.setState({ products: searchResult.results });
+        break;
+
+      default:
+        const { category } = this.state;
+        const results = await ApiFunctions.GetProductByCategory(category);
+        const _category = await ApiFunctions.GetCategoryById(category);
+        this.setState({ products: results, category: _category });
+        break;
+    }
   };
 
   render() {
     const { products, category } = this.state;
     return (
       <Fragment>
-        <SidebarCategories category={category} />
         <div className='products_container'>
-          <Breadcrumbs category={category} />
+          {this.props.context !== 'search' ? (
+            <>
+              <SidebarCategories category={category} />
+              <Breadcrumbs category={category} />
+            </>
+          ) : (
+            <></>
+          )}
           <div className='product_grid'>
             {products.map((product, index) => {
               return (
-                <Product product={product} category={category.id} key={index} />
+                <Product
+                  product={product}
+                  category={
+                    category !== undefined ? category.id : product.category_id
+                  }
+                  key={index}
+                />
               );
             })}
           </div>

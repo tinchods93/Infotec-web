@@ -81,11 +81,15 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <form className='d-flex'>
+            <form
+              action='/products/search?:searchProd'
+              method='GET'
+              className='d-flex'>
               <input
                 className='form-control me-2'
                 // type='search'
                 placeholder='Search'
+                name='searchProd'
                 aria-label='Search'
                 onChange={this.props.onchange}
                 onKeyDown={this.props.handleKeyEvents}

@@ -86,17 +86,49 @@ export default class ProductView extends Component {
           </div>
           <div className='product_card_info'>
             <div className='product_card_info-body'>
+              <div className='product_card_info_sold'>
+                <p>
+                  <span id='product_condition'>
+                    {product.condition === 'used' ? 'Usado' : 'Nuevo'}
+                  </span>
+                  {product.sold_quantity > 0 ? (
+                    <>
+                      <span> | </span>
+                      <span id='sold_quantity'>
+                        {product.sold_quantity} vendidos
+                      </span>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </p>
+              </div>
               <div className='product_card_info_title'>
                 <h5>{product.title}</h5>
               </div>
               <div className='product_card_info_price'>
                 <div className='product_price'>
-                  <h2>${product.base_price}</h2>
+                  {product.original_price !== null ? (
+                    <>
+                      <span id='original_price'>${product.original_price}</span>
+                      <p>
+                        <span id='sell_price'>${product.base_price}</span>
+                        <span id='discount'>
+                          {Math.floor(
+                            100 - (product.price / product.original_price) * 100
+                          )}
+                          % OFF
+                        </span>
+                      </p>
+                    </>
+                  ) : (
+                    <span id='sell_price'>${product.base_price}</span>
+                  )}
                 </div>
                 <div className='product_payments'>
                   <p>
                     <span>en </span>
-                    <span style={{ color: 'green' }}>
+                    <span id='cuotas'>
                       3x {(product.base_price / 3).toFixed(2)} sin interés
                     </span>
                   </p>

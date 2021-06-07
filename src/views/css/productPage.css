@@ -11,23 +11,15 @@
   border-radius: 10px;
   box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 5%;
+  font-size: 1rem;
 }
 
+/*//// CARACTERISTICS SECTION (left side ////*/
 .product_card_caracteristics {
   width: 70%;
   min-width: 190px;
   height: fit-content;
 }
-
-.product_card_info {
-  width: 30%;
-  min-width: 200px;
-  height: fit-content;
-  border-radius: 10px;
-  border: solid 1px rgb(0, 0, 0, 0.1);
-  padding: 2%;
-}
-
 .product_imgs_container {
   height: 650px;
   width: 98.5%;
@@ -71,11 +63,29 @@
   width: 100%;
   height: fit-content;
 }
-
 .product_card_caracteristics hr {
   margin-top: 5%;
   margin-bottom: 5%;
   margin-right: 3%;
+}
+.product_description_title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1%;
+}
+.product_description_body {
+  font-size: 1.2rem;
+  text-align: justify;
+}
+/*/ //////////////////*/
+/*//// INFO SECTION (RIGHT SIDE) ////*/
+.product_card_info {
+  width: 30%;
+  min-width: 200px;
+  height: fit-content;
+  border-radius: 10px;
+  border: solid 1px rgb(0, 0, 0, 0.1);
+  padding: 2%;
 }
 
 .product_card_info_body {
@@ -100,13 +110,24 @@
   width: 100%;
 }
 
-.product_description_title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1%;
+.product_card_info_sold{
+  color: rgb(160, 160, 160);
+}
+#cuotas{
+  color:green
+}
+#original_price{
+  color: rgb(160, 160, 160);
+  text-decoration:line-through;
+}
+#sell_price{
+  font-size: 1.8rem;
+}
+#discount{
+  font-size: 1.2rem;
+  margin-left: 1%;
+  color:green
 }
 
-.product_description_body {
-  font-size: 1.2rem;
-  text-align: justify;
-}
+
+/*/ //////////////////*/
