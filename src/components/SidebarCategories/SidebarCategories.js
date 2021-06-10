@@ -12,7 +12,7 @@ const SidebarCategories = ({ category }) => {
   return (
     <>
       <i
-        className='fas fa-caret-square-down'
+        className='fas fa-caret-square-down sidebar_icon'
         onMouseOver={toggleSideBar}
         onClick={toggleSideBar}></i>
       {active ? (
