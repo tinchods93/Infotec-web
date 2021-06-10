@@ -26,7 +26,7 @@ const GetProductByCategory = async (category_id) => {
     .get(
       `https://api.mercadolibre.com/sites/MLA/search?category=${category_id}`
     )
-    .then((resp) => resp.data.results)
+    .then((resp) => resp.data)
     .catch((err) => console.log(err));
   return products;
 };

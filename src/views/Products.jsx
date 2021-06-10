@@ -37,7 +37,8 @@ export default class Products extends Component {
         const { category } = this.state;
         const results = await ApiFunctions.GetProductByCategory(category);
         const _category = await ApiFunctions.GetCategoryById(category);
-        this.setState({ products: results, category: _category });
+        console.log(results);
+        this.setState({ products: results.results, category: _category });
         break;
     }
   };

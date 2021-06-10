@@ -1,0 +1,87 @@
+.itemList {
+  display: flexbox;
+  border: solid rgba(0, 0, 0, 0.1) 1px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 300px;
+  margin-top: 5%;
+  height: 100%;
+  background: white;
+  padding: 20px;
+}
+.cartItem {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 2%;
+  height: 10em;
+  width: 100%;
+}
+.itemData {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.itemImage {
+  width: 20%;
+  height: 100%;
+  padding: 1%;
+}
+.itemImage img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.itemTitle {
+  height: 100%;
+  width: 40%;
+  font-size: 1.3rem;
+}
+.linkTitle {
+  text-decoration: none;
+  color: black;
+}
+.itemQuantity {
+  height: 100%;
+  width: 20%;
+  padding-left: 70px;
+}
+.quantityButton {
+  border-radius: 5px;
+  border: solid 1px rgb(120, 120, 120);
+  height: 4em;
+  width: fit-content;
+  background: white;
+  padding: 11px;
+}
+.quantityInput {
+  margin-left: 4px;
+  margin-right: 4px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  width: 4em;
+  height: 2em;
+}
+.itemPrice {
+  height: 100%;
+  width: 20%;
+}
+
+.emptyItem {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.emptyItem .title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: rgb(110, 110, 110);
+}
+.emptyItem .otherItems {
+  font-size: 1.1rem;
+  color: rgb(130, 130, 130);
+}

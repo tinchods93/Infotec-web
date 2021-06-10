@@ -49,3 +49,8 @@
 hr.new-hr {
   border: 1px solid black;
 }
+
+.fa-shopping-cart {
+  font-size: 1.4rem;
+  color: rgb(150, 150, 150);
+}
