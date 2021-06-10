@@ -4,11 +4,11 @@
   font-weight: 700;
 }
 
-a {
+.links {
   text-decoration: none;
 }
 
-a :hover {
+.links :hover {
   color: rgb(24, 153, 31);
 }
 

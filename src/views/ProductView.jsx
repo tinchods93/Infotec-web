@@ -9,6 +9,7 @@ export default class ProductView extends Component {
     this.state = {
       category: this.props.match.params.category,
       productId: this.props.match.params.productId,
+      addCartItem: this.props.addCartItem,
       product: {},
       currentImage: '',
     };
@@ -32,6 +33,11 @@ export default class ProductView extends Component {
 
   thumbnailOnMouseHover = (ev) => {
     this.setState({ currentImage: ev.target.src });
+  };
+
+  addCartProduct = () => {
+    const { product, addCartItem } = this.state;
+    addCartItem(product);
   };
 
   render() {
@@ -136,7 +142,11 @@ export default class ProductView extends Component {
               </div>
             </div>
             <div className='product_card_buttons'>
-              <button className='btn btn-secondary'>Agregar al carrito</button>
+              <button
+                className='btn btn-secondary'
+                onClick={this.addCartProduct}>
+                Agregar al carrito
+              </button>
               <button className='btn btn-primary'>Comprar ahora</button>
             </div>
           </div>

@@ -81,6 +81,7 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
+
             <form
               action='/products/search?:searchProd'
               method='GET'
@@ -95,6 +96,9 @@ class Navbar extends Component {
                 onKeyDown={this.props.handleKeyEvents}
               />
             </form>
+            <a href='/shoppingCart' className='navbar nav-link'>
+              <i className='fas fa-shopping-cart'></i>
+            </a>
           </div>
         </div>
       </nav>

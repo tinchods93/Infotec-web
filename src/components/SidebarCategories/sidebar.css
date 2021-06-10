@@ -13,7 +13,7 @@
   left: 0.1%;
   top: 120px;
 }
-.fas {
+.sidebar_icon {
   position: var(--position);
   top: 80px;
   font-size: 1.5rem;
