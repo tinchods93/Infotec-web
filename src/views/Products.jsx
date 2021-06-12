@@ -46,31 +46,29 @@ export default class Products extends Component {
   render() {
     const { products, category } = this.state;
     return (
-      <Fragment>
-        <div className='products_container'>
-          {this.props.context !== 'search' ? (
-            <>
-              <SidebarCategories category={category} />
-              <Breadcrumbs category={category} />
-            </>
-          ) : (
-            <></>
-          )}
-          <div className='product_grid'>
-            {products.map((product, index) => {
-              return (
-                <Product
-                  product={product}
-                  category={
-                    category !== undefined ? category.id : product.category_id
-                  }
-                  key={index}
-                />
-              );
-            })}
-          </div>
+      <div className='main__container--not_home'>
+        {this.props.context !== 'search' ? (
+          <>
+            <Breadcrumbs category={category} />
+          </>
+        ) : (
+          <></>
+        )}
+        <div className='grid__product__container'>
+          <SidebarCategories category={category} />
+          {products.map((product, index) => {
+            return (
+              <Product
+                product={product}
+                category={
+                  category !== undefined ? category.id : product.category_id
+                }
+                key={index}
+              />
+            );
+          })}
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
@@ -84,26 +82,24 @@ const Product = ({ product, category }) => {
   };
 
   return (
-    <div className='product_cardd' onClick={routeChange}>
-      <div className='product_thumbnail_container'>
+    <div
+      className='mycard mycard--roundborder mycard--anim'
+      onClick={routeChange}>
+      <div className='product__img'>
         <img src={product.thumbnail} alt={`Thumbnail for ${product.title}`} />
       </div>
-      <div className='product_body'>
-        <div className='product_price'>
-          <div className='price'>
-            <span className='sp_price'>${product.price}</span>
-          </div>
+      <div className='product__body'>
+        <div className='product__prices'>
+          <div className='price'>${product.price}</div>
           <div className='installments'>
             {product.installments ? (
-              <span className='sp_payments'>{`${product.installments.quantity} cuotas de $${product.installments.amount}`}</span>
+              `${product.installments.quantity} cuotas de $${product.installments.amount}`
             ) : (
               <></>
             )}
           </div>
         </div>
-        <div className='product_title'>
-          <span className='sp_title'>{product.title}</span>
-        </div>
+        <div className='product__title'>{product.title}</div>
       </div>
     </div>
   );
