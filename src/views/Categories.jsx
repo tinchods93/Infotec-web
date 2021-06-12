@@ -10,6 +10,12 @@ export default class Categories extends Component {
     };
   }
 
+  componentDidMount() {
+    if (!this.state.categories.length) {
+      this.setCategories();
+    }
+  }
+
   setCategories = async () => {
     await ApiFunctions.GetCategories().then((resp) => {
       resp.forEach(async ({ id }) => {
@@ -23,37 +29,30 @@ export default class Categories extends Component {
     this.setState({ categories: [...this.state.categories, category] });
   };
 
-  componentDidMount() {
-    if (!this.state.categories.length) {
-      this.setCategories();
-    }
-  }
-
   render() {
     return (
       <>
-        <div className='title'>
+        <div className='page__title'>
           <span>Categorías y Secciones</span>
         </div>
-        <div className='category_card'>
+        <div className='category__container'>
           {this.state.categories.map((category, index) => {
             return (
               <Fragment key={index}>
-                <div className='category_section'>
-                  <div className='category_section_title'>
-                    <a href={`/products/${category.id}`} className='links'>
-                      <h4>{category.name}</h4>
+                <div className='category__section'>
+                  <div className='category__section__title'>
+                    <a href={`/products/${category.id}`}>
+                      <span>{category.name}</span>
                     </a>
                   </div>
-                  <div className='category_section_body'>
+                  <div className='category__section__body'>
                     {category.children_categories.map(({ id, name }, index) => {
                       return (
-                        <a
-                          href={`/products/${id}`}
-                          key={index}
-                          className='links'>
-                          {name}
-                        </a>
+                        <div className='category__section__link'>
+                          <a href={`/products/${id}`} key={index}>
+                            {name}
+                          </a>
+                        </div>
                       );
                     })}
                   </div>

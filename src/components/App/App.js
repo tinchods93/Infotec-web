@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <>
         <Navbar />
-        <div className='container'>
+        <div className='main__container'>
           <Router>
             <Switch>
               <Route

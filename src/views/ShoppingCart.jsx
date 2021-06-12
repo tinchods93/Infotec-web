@@ -10,18 +10,22 @@ export default class ShoppingCart extends Component {
     this.removeItem = this.removeItem.bind(this);
     this.changeQuantity = this.changeQuantity.bind(this);
   }
+
   componentDidMount() {
     this.updateShoppingList();
   }
+
   updateShoppingList() {
     LocalStorageFunctions.getShoppingCart().then((resp) => {
       this.setState({ shoppingList: resp });
     });
   }
+
   removeItem(product) {
     LocalStorageFunctions.removeShoppingCartProduct(product);
     this.updateShoppingList();
   }
+
   async changeQuantity({ operation, product }) {
     await LocalStorageFunctions.changeQuantity({
       operation: operation,
@@ -29,6 +33,7 @@ export default class ShoppingCart extends Component {
     });
     this.updateShoppingList();
   }
+
   render() {
     return (
       <div className='itemList'>
