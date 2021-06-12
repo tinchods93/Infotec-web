@@ -10,12 +10,6 @@ const getShoppingCart = async () => {
 };
 
 const addShoppingCartProduct = async (product) => {
-  /*
-  {
-    quantity:number,
-    product:{}
-  }
-  */
   if (!shoppingCart.length) {
     await getShoppingCart();
   }
@@ -66,9 +60,10 @@ const removeShoppingCartProduct = async (product) => {
   const find = shoppingCart.findIndex((item) => item.product.id === product.id);
   if (find !== -1) {
     shoppingCart.splice(find, 1);
-    if (shoppingCart.length <= 0) {
-      localStorage.removeItem('ShoppingCart');
-    } else shoppingCart = JSON.stringify(shoppingCart);
+    shoppingCart.length <= 0
+      ? (shoppingCart = JSON.stringify([]))
+      : (shoppingCart = JSON.stringify(shoppingCart));
+
     localStorage.setItem('ShoppingCart', shoppingCart);
   }
 };
