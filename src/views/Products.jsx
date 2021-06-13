@@ -29,7 +29,6 @@ export default class Products extends Component {
         const _search = formatSearch(url);
         // console.log(_search);
         const searchResult = await ApiFunctions.SearchProducts(_search);
-        console.log(searchResult);
         await this.setState({ products: searchResult.results });
         break;
 
@@ -37,7 +36,6 @@ export default class Products extends Component {
         const { category } = this.state;
         const results = await ApiFunctions.GetProductByCategory(category);
         const _category = await ApiFunctions.GetCategoryById(category);
-        console.log(results);
         this.setState({ products: results.results, category: _category });
         break;
     }
@@ -45,6 +43,7 @@ export default class Products extends Component {
 
   render() {
     const { products, category } = this.state;
+
     return (
       <div className='main__container--not_home'>
         {this.props.context !== 'search' ? (

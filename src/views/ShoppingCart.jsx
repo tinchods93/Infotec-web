@@ -35,6 +35,7 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
+    console.log(this.state.shoppingList);
     return (
       <div className='itemList'>
         {this.state.shoppingList.length > 0 ? (
