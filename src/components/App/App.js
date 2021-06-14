@@ -8,6 +8,7 @@ import Products from '../../views/Products';
 import Categories from '../../views/Categories';
 import ProductPage from '../../views/ProductView';
 import ShoppingCart from '../../views/ShoppingCart';
+import AboutMe from '../../views/About';
 
 export default class App extends Component {
   constructor() {
@@ -34,6 +35,7 @@ export default class App extends Component {
                   return <Products {...props} context='search' />;
                 }}></Route>
               <Route path='/' exact component={Home}></Route>
+              <Route path='/about' exact component={AboutMe}></Route>
               <Route
                 path='/shoppingCart'
                 exact

@@ -31,7 +31,7 @@ export default class Categories extends Component {
 
   render() {
     return (
-      <>
+      <div className='main__container--not_home'>
         <div className='page__title'>
           <span>Categorías y Secciones</span>
         </div>
@@ -62,7 +62,7 @@ export default class Categories extends Component {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 }

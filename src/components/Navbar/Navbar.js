@@ -60,12 +60,12 @@ class Navbar extends Component {
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
                 <a className='nav-link active' aria-current='page' href='/'>
-                  Home
+                  Inicio
                 </a>
               </li>
               <li className='nav-item dropdown-hover'>
                 <a className='nav-link dropdown-btn' href='/categories'>
-                  Categories
+                  Categorias
                 </a>
                 <div className='container dropdown-content'>
                   <div className='row'>
@@ -76,8 +76,8 @@ class Navbar extends Component {
                 </div>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='../about.html'>
-                  About us
+                <a className='nav-link' href='/about'>
+                  Acerca de mi
                 </a>
               </li>
             </ul>
@@ -89,7 +89,7 @@ class Navbar extends Component {
               <input
                 className='form-control me-2'
                 // type='search'
-                placeholder='Search'
+                placeholder='Buscar Productos'
                 name='searchProd'
                 aria-label='Search'
                 onChange={this.props.onchange}

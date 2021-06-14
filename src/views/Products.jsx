@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { ApiFunctions } from '../utils/apifunctions';
 import './css/products.css';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import { formatSearch } from '../utils/stringFormatting';
+import { formatSearch, formatPrice } from '../utils/stringFormatting';
 import { useHistory } from 'react-router-dom';
 import SidebarCategories from '../components/SidebarCategories/SidebarCategories';
 
@@ -29,7 +29,6 @@ export default class Products extends Component {
         const _search = formatSearch(url);
         // console.log(_search);
         const searchResult = await ApiFunctions.SearchProducts(_search);
-        console.log(searchResult);
         await this.setState({ products: searchResult.results });
         break;
 
@@ -37,7 +36,6 @@ export default class Products extends Component {
         const { category } = this.state;
         const results = await ApiFunctions.GetProductByCategory(category);
         const _category = await ApiFunctions.GetCategoryById(category);
-        console.log(results);
         this.setState({ products: results.results, category: _category });
         break;
     }
@@ -45,6 +43,7 @@ export default class Products extends Component {
 
   render() {
     const { products, category } = this.state;
+
     return (
       <div className='main__container--not_home'>
         {this.props.context !== 'search' ? (
@@ -90,7 +89,9 @@ const Product = ({ product, category }) => {
       </div>
       <div className='product__body'>
         <div className='product__prices'>
-          <div className='price'>${product.price}</div>
+          <div className='price'>
+            {formatPrice(product.price, product.currency_id)}
+          </div>
           <div className='installments'>
             {product.installments ? (
               `${product.installments.quantity} cuotas de $${product.installments.amount}`
