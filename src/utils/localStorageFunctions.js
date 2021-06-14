@@ -41,9 +41,7 @@ const changeQuantity = async ({ operation, product, index = '' }) => {
       shoppingCart[index].quantity += 1;
       break;
     case '-':
-      shoppingCart[index].quantity -= 1;
-      if (shoppingCart[index].quantity === 0)
-        removeShoppingCartProduct(shoppingCart[index]);
+      if (shoppingCart[index].quantity > 0) shoppingCart[index].quantity -= 1;
       break;
     default:
       break;

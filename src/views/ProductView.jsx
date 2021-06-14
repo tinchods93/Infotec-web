@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './css/productPage.css';
 import { ApiFunctions } from '../utils/apifunctions';
+import { formatPrice } from '../utils/stringFormatting';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 export default class ProductView extends Component {
@@ -91,10 +92,18 @@ export default class ProductView extends Component {
                     {product.original_price !== null ? (
                       <>
                         <span id='original__price'>
-                          ${product.original_price}
+                          {formatPrice(
+                            product.original_price,
+                            product.currency_id
+                          )}
                         </span>
                         <p>
-                          <span id='sell__price'>${product.base_price}</span>
+                          <span id='sell__price'>
+                            {formatPrice(
+                              product.base_price,
+                              product.currency_id
+                            )}
+                          </span>
                           <span id='discount'>
                             {Math.floor(
                               100 -
@@ -105,7 +114,9 @@ export default class ProductView extends Component {
                         </p>
                       </>
                     ) : (
-                      <span id='sell__price'>${product.base_price}</span>
+                      <span id='sell__price'>
+                        {formatPrice(product.base_price, product.currency_id)}
+                      </span>
                     )}
                   </div>
                   <div className='product__payments'>
