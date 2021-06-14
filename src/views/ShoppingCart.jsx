@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LocalStorageFunctions } from '../utils/localStorageFunctions';
 import './css/shoppingCart.css';
+import { formatPrice } from '../utils/stringFormatting';
 export default class ShoppingCart extends Component {
   constructor(props) {
     super(props);
@@ -134,13 +135,17 @@ const CartItem = ({ element, removeItem, changeQuantity, lastChild }) => {
                     -{discount}%
                   </span>
                   <span id='original__price' style={{ fontSize: '1.1rem' }}>
-                    ${originalPrice}
+                    {formatPrice(originalPrice, product.currency_id)}
                   </span>
                 </p>
-                <span id='sell__price'>${finalPrice}</span>
+                <span id='sell__price'>
+                  {formatPrice(finalPrice, product.currency_id)}
+                </span>
               </>
             ) : (
-              <span id='sell__price'>${finalPrice}</span>
+              <span id='sell__price'>
+                {formatPrice(finalPrice, product.currency_id)}
+              </span>
             )}
           </div>
         </div>
