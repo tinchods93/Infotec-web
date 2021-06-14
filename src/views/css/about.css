@@ -1,0 +1,73 @@
+:root {
+  --min-width: 250px;
+}
+.about__container {
+  display: flex;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  min-width: 320px;
+  max-width: 66%;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+  margin: 10px auto;
+  text-align: justify;
+  padding: 10px;
+}
+
+.about__avatar {
+  text-align: center;
+  min-width: var(--min-width);
+  height: auto;
+  flex: 1;
+}
+
+.about__avatar img {
+  object-fit: scale-down;
+  border-radius: 50%;
+  width: 15em;
+  height: 15em;
+  margin: 10px;
+}
+.about__description {
+  flex: 3;
+  min-width: var(--min-width);
+  height: 100%;
+  text-align: justify;
+  margin: 10px;
+  padding: 10px;
+}
+
+.about__links__title {
+  /* background: blueviolet; */
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 500;
+  padding-top: 5px;
+  width: 100%;
+}
+
+.about__links {
+  margin: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: var(--min-width);
+  /* background: brown; */
+}
+.flex__row {
+  display: flex;
+  text-align: center;
+  height: 100%;
+  /* background: rgb(214, 148, 148); */
+}
+
+.about__links__icon {
+  text-align: center;
+  width: 100%;
+  font-size: 4rem;
+}
+
+.fa-github-square {
+  color: rgb(82, 82, 82);
+}

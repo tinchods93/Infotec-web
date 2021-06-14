@@ -35,39 +35,43 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
-    console.log(this.state.shoppingList);
     return (
-      <div className='itemList'>
-        {this.state.shoppingList.length > 0 ? (
-          this.state.shoppingList.map((element, key) => {
-            return (
-              <CartItem
-                element={element}
-                key={key}
-                removeItem={this.removeItem}
-                changeQuantity={this.changeQuantity}
-              />
-            );
-          })
-        ) : (
-          <article className='cartItem'>
-            <div className='itemData'>
-              <div className='emptyItem'>
-                <span className='title'>Your Shopping Cart is empty.</span>
-                <br />
-                <span className='otherItems'>
-                  Go ahead and get your favorite items!
-                </span>
+      <div className='main__container--not_home'>
+        <div className='item__list'>
+          {this.state.shoppingList.length > 0 ? (
+            this.state.shoppingList.map((element, key) => {
+              return (
+                <CartItem
+                  element={element}
+                  key={key}
+                  removeItem={this.removeItem}
+                  changeQuantity={this.changeQuantity}
+                  lastChild={
+                    !(key < this.state.shoppingList.length - 1) ? true : false
+                  }
+                />
+              );
+            })
+          ) : (
+            <article className='item'>
+              <div className='item__data'>
+                <div className='empty__item'>
+                  <span className='title'>Your Shopping Cart is empty.</span>
+                  <br />
+                  <span className='other__items'>
+                    Go ahead and get your favorite items!
+                  </span>
+                </div>
               </div>
-            </div>
-          </article>
-        )}
+            </article>
+          )}
+        </div>
       </div>
     );
   }
 }
 
-const CartItem = ({ element, removeItem, changeQuantity }) => {
+const CartItem = ({ element, removeItem, changeQuantity, lastChild }) => {
   let { quantity, product } = element;
 
   let originalPrice;
@@ -82,61 +86,65 @@ const CartItem = ({ element, removeItem, changeQuantity }) => {
   }
   return (
     <>
-      <article className='cartItem'>
-        <div className='itemData'>
-          <div className='itemImage'>
+      <article className='item'>
+        <div className='item__data'>
+          <div className='item__data__image'>
             <a href={`/product/${product.category_id}/${product.id}`}>
-              <img src={product.pictures[0].url} alt='itemImage' />
+              <img src={product.pictures[0].url} alt='item__data__image' />
             </a>
           </div>
-          <div className='itemTitle'>
+          <div className='item__data__title'>
             <a
               href={`/product/${product.category_id}/${product.id}`}
-              className='linkTitle'>
+              className='link__title'>
               <span>{product.title}</span>
             </a>
           </div>
-          <div className='itemQuantity'>
-            <div className='quantityButton'>
-              <i
-                className='fas fa-minus'
-                onClick={() => {
-                  changeQuantity({ operation: '-', product: product });
-                }}></i>
-              <>
+          <div className='item__data__quantity'>
+            <div className='quantity__button'>
+              <div className='quantity__operator'>
+                <i
+                  className='fas fa-minus'
+                  onClick={() => {
+                    changeQuantity({ operation: '-', product: product });
+                  }}></i>
+              </div>
+              <div className='quantity__input_container'>
                 <input
                   type='text'
-                  className='quantityInput'
+                  className='quantity__input'
                   value={quantity}
                   onChange={() => {}}
                 />
-              </>
-              <i
-                className='fas fa-plus'
-                onClick={() => {
-                  changeQuantity({ operation: '+', product: product });
-                }}></i>
+              </div>
+              <div className='quantity__operator'>
+                <i
+                  className='fas fa-plus'
+                  onClick={() => {
+                    changeQuantity({ operation: '+', product: product });
+                  }}></i>
+              </div>
             </div>
           </div>
-          <div className='itemPrice'>
+          <div className='item__data__price'>
             {product.original_price !== null ? (
               <>
                 <p>
                   <span id='discount' style={{ marginRight: '3%' }}>
                     -{discount}%
                   </span>
-                  <span id='original_price' style={{ fontSize: '1.1rem' }}>
+                  <span id='original__price' style={{ fontSize: '1.1rem' }}>
                     ${originalPrice}
                   </span>
                 </p>
-                <span id='sell_price'>${finalPrice}</span>
+                <span id='sell__price'>${finalPrice}</span>
               </>
             ) : (
-              <span id='sell_price'>${finalPrice}</span>
+              <span id='sell__price'>${finalPrice}</span>
             )}
           </div>
         </div>
-        <div className='itemActions'>
+        <div className='item__actions'>
           <p>
             <span
               onClick={() => {
@@ -146,8 +154,8 @@ const CartItem = ({ element, removeItem, changeQuantity }) => {
             </span>
           </p>
         </div>
+        {!lastChild ? <hr /> : <></>}
       </article>
-      <hr />
     </>
   );
 };
